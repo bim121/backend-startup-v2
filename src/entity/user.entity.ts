@@ -24,7 +24,7 @@ export class UserEntity {
       enum: Role,
       default: [Role.User]
     })
-    public roles: Role[]
+    public roles: Role[];
     
     @BeforeInsert()  async hashPassword() {
         this.password = await bcrypt.hash(this.password, 10);  

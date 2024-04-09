@@ -5,6 +5,7 @@ import * as path from 'path'
 import { ConfigModule } from "@nestjs/config";
 import * as Joi from '@hapi/joi'
 import { DatabaseModule } from "./database/database";
+import { StripeModule } from "./stripe/stripe.module";
 
 @Module({
     imports: [
@@ -23,10 +24,14 @@ import { DatabaseModule } from "./database/database";
           PORT: Joi.number(),
           JWT_SECRET: Joi.string().required(),
           JWT_EXPIRATION_TIME: Joi.string().required(),
+          STRIPE_SECRET_KEY: Joi.string(),
+          STRIPE_CURRENCY: Joi.string(),
+          FRONTEND_URL: Joi.string(),
         })
       }),
         AuthModule,
         DatabaseModule,
+        StripeModule,
       ]
 })
 export class AppModule{
