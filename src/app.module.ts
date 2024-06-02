@@ -6,6 +6,7 @@ import { ConfigModule } from "@nestjs/config";
 import * as Joi from '@hapi/joi'
 import { DatabaseModule } from "./database/database";
 import { StripeModule } from "./stripe/stripe.module";
+import { ProductModule } from "./product/product.module";
 
 @Module({
     imports: [
@@ -32,6 +33,7 @@ import { StripeModule } from "./stripe/stripe.module";
         AuthModule,
         DatabaseModule,
         StripeModule,
+        ProductModule
       ]
 })
 export class AppModule{
