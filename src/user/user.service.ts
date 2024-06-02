@@ -26,8 +26,8 @@ export class UserService {
         return user;  
     }
    
-    async findByLogin({ username, password }: LoginUserDto): Promise<UserDto> {    
-        const user = await this.userRepo.findOne({ where: { username } });
+    async findByLogin({ email, password }: LoginUserDto): Promise<UserDto> {    
+        const user = await this.userRepo.findOne({ where: { email } });
         
         
         if (!user) {

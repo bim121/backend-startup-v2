@@ -48,11 +48,9 @@ export class AuthService {
         const user = await this.usersService.findByLogin(loginUserDto);    
         
         const token = this._createToken(user);
-        
-        console.log("login")
 
         return {
-            username: user.username, ...token,    
+            user: user, ...token,    
         };  
     }
     
@@ -92,6 +90,6 @@ export interface RegistrationStatus {
 }
 
 export interface LoginStatus {  
-    username: string;
+    user: UserDto;
 
 }

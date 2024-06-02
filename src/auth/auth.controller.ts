@@ -1,7 +1,8 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, UseGuards } from "@nestjs/common";
 import { AuthService, LoginStatus, RegistrationStatus } from "./auth.service";
 import { CreateUserDto } from "src/dto/user-create-dto";
 import { LoginUserDto } from "src/dto/user-login-dto";
+import { JwtStrategy } from "./jwt.strategy";
 
 @Controller('/auth')
 export class AuthController {
@@ -22,6 +23,7 @@ export class AuthController {
         }
 
         @Get(':id')
+        @UseGuards(JwtStrategy)
         async getOne(@Param('id') id: number){
             return this.authService.getOne(id);
         }
